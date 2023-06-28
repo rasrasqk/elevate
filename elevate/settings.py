@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#p6)4=rtuw@+f-su&0a5#b2fs*7w36b!ysb&h#0*i%fc8sww!9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,12 +75,22 @@ WSGI_APPLICATION = 'elevate.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""
+
+import dj_database_url
+
+DATABASES = {
+
+    'default': dj_database_url.parse('postgres://productiondatabase_o2lz_user:AZvUrD1qJ9Z2WAIhGw7cuct4ITM6ZNL5@dpg-cidtjn18g3n4p2pr053g-a.oregon-postgres.render.com/productiondatabase_o2lz')
+}
+
 
 
 # Password validation
